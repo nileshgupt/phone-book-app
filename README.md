@@ -1,5 +1,5 @@
 # RM-PhoneBook
-This is a phone book application created for RentMojo assignment
+This is a phone book application created for class assignment
 
 ## Technologies used
 This application uses Node.js with Express Framework in the backend, Angular 9 as frontend client, Mongoose ODM and MongoDb for the
@@ -22,9 +22,7 @@ If the appplication is hosted on the same location as the server, set `baseURL =
 after deleting all the contents present in that directory .
 4. Run the server
 
-## Working Sample
-The application is deployed at
-https://rentmojo.uc.r.appspot.com/
+
 
 ## Known Issues
 The search interface has issues with the search box visibility. 
