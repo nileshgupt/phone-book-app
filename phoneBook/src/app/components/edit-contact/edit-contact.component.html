@@ -1,0 +1,75 @@
+<div class="container" id="editMainContainer">
+    <div class="container">
+        <h2 style="text-align: center;"> Edit Contact</h2>
+      
+        <hr>
+        <div class="row" id="editContainer">
+          <form class="col s12" [formGroup]="editFormGroup">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="name" type="text" class="validate" placeholder="Contact Name" formControlName="name">
+              </div>
+            </div>
+      
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="dateOfBirth" type="date" class="validate" formControlName="dateOfBirth">
+                <label for="dateOfBirth">Date of Birth</label>
+              </div>
+            </div>
+      
+            <div class="row" formArrayName="phoneNumber">
+              <div> <span class="editBanner">Edit Phone Numbers</span>
+              
+                <button style="float: right;margin-right:-1.2%" class="btn" (click)="addPhoneInput('')"><i class="material-icons">add</i></button></div>
+             
+              <div class="row verticalAlign" *ngFor="let k of getPhoneInputsArray.controls;l let i = index">
+                <div class="input-field col s11">
+                  <input id="dateOfBirth" type="email" class="validate" [formControlName]="i">
+      
+                </div>
+                <div class="col s1">
+                  <button class="btn" (click)="deleteNumber(i)"><i class="material-icons">delete</i></button>
+                </div>
+              </div>
+            </div>
+      
+            <div class="row" formArrayName="emails">
+              <div><span class="editBanner">Edit Email Addresses</span>
+                <button style="float: right;margin-right:-1.2%" class="btn" (click)="addEmailInput('')"><i class="material-icons">add</i></button>
+              </div>
+                <div class="row verticalAlign" *ngFor="let k of getEmailInputsArray.controls ; let i = index">
+                  <div class="input-field col s11">
+                    <input id="dateOfBirth" type="email" class="validate" [formControlName]="i">
+        
+                  </div>
+                  <div class="col s1">
+                    <button class="btn" (click)="deleteEmail(i)"><i class="material-icons">delete</i></button>
+                  </div>
+                </div>
+              </div>
+
+        <div>
+     
+          <div *ngIf="showAlreadyExistsError" style="background-color: brown; color: white;padding: 10px;">
+            <h6>One of the number already exists </h6>
+          </div>
+          <br>
+          <div *ngIf="showSuccessMessage" style="background-color: green; color: black;padding: 10px;">
+            <h6>Your contact has been updated! </h6>
+          </div>
+          <br>
+            <input type="button" value="Save Changes" class="btn" [disabled]="!editFormGroup.valid" (click)="onSubmit()">
+            &nbsp;
+            <button class="btn blue" [routerLink]="['/']">Go Back to Homepage</button>
+        </div>
+          </form>
+        </div>
+      
+      
+      
+      
+      </div>
+</div>
+
+

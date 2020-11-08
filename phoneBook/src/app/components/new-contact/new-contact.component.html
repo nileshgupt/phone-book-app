@@ -1,0 +1,80 @@
+<div class="container" id="addNewMainContainer">
+  <div class="container">
+    <h2 style="text-align: center;">Add new contact</h2>
+
+    <hr>
+    <div class="row" id="addNewDetailsContainer">
+      <form action="" [formGroup]="newContactFromGroup">
+        <div class="row">
+          <div class="input-field col s12">
+            <input placeholder="Contact Name" id="first_name" type="text" class="validate" formControlName="name">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input placeholder="Contact Name" id="first_name" type="date" class="validate" formControlName="dateOfBirth">
+          </div>
+        </div>
+
+
+        <h5 style="margin-top: 2rem;">Add Phone Numbers</h5>
+        <div class="row verticalAlign">
+          
+          <div class="input-field col s12">
+            <input placeholder="Phone number" id="first_name" type="number" class="validate" formControlName="singleNumberInput">
+          </div>
+          <button class="btn" (click)="addPhoneInput()"><i class="material-icons">add</i></button>
+        </div>
+
+        <div class="row" formArrayName="phoneNumbers">
+          <div class="row verticalAlign" *ngFor=" let k of phoneNumbersArray.controls; let i = index">
+            <div class="input-field col s12">
+              <input placeholder="Phone number" id="first_name" type="number" class="validate" [formControlName]="i">
+              
+            </div>
+            <button class="btn" (click)="removePhoneInput(i)"><i class="material-icons">delete</i></button>
+          </div>
+        
+        </div>
+
+        <h5 style="margin-top: 2rem;">Add Email Addresses</h5>
+        <div class="row verticalAlign">
+          
+          <div class="input-field col s12">
+            <input placeholder="Email address" id="first_name" type="email" class="validate" formControlName="singleEmailInput">
+          </div>
+          <button class="btn" (click)="addEmailInput()"><i class="material-icons">add</i></button>
+        </div>
+
+        <div class="row" formArrayName="emails">
+          <div class="row verticalAlign" *ngFor=" let k of emailArray.controls; let i = index">
+            <div class="input-field col s12">
+              <input placeholder="Email address" id="first_name" type="email" class="validate" [formControlName]="i">
+              
+            </div>
+            <button class="btn" (click)="removeEmailInput(i)"><i class="material-icons">delete</i></button>
+          </div>
+        
+        </div>
+
+        <div *ngIf="showAlreadyExistsError" style="background-color: brown; color: white;padding: 10px;">
+          <h6>One of the number already exists </h6>
+        </div>
+        <br>
+        <div *ngIf="showSuccessMessage" style="background-color: green; color: black;padding: 10px;">
+          <h6>Your contact has been uploaded! </h6>
+        </div>
+        <br>
+        <button class="btn" (click)="onSubmit()" [disabled]="newContactFromGroup.valid==false" > Create new Contact</button>
+        &nbsp;
+        <button class="btn blue" [routerLink]="['/']">Go Back to Homepage</button>
+      </form>
+
+    </div>
+
+
+
+
+  </div>
+</div>

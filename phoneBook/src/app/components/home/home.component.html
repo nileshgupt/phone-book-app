@@ -1,0 +1,62 @@
+<div class="container">
+
+  <!-- Search Container -->
+  <div id="searchContainer" class="card">
+    <form action="" class="displayFlex" [formGroup]="searchForm">
+      <div class="inline" style="flex:1" id="searchBarContainer">
+        <input type="text" value="" id="searchBar" placeholder="Search Your Contacts" (focus) = 'showSearchBox=true' (keyup)="search($event)">
+      </div>
+      <div class="inline">
+        <button class="btn ">Search</button>
+      </div>
+    </form>
+    <div style="position: relative; z-index: 4;" *ngIf="showSearchBox" id="searchBox" (click)="showSearchBox=true" (mouseleave)="clearSearch()">
+      <app-phone-record *ngFor="let i of searchResults; let k = index" [ContactModel]=i [referenceId]=k (deleteEvent)="deleteContact($event)" (mouseover)="showSearchBox=true"></app-phone-record>
+    </div>
+  </div>
+
+  <!-- Line break between the search container and the contactsView -->
+  <hr style="margin-top:4rem">
+
+  <div id="contactsView" >
+
+    <!-- Show loader while the component is fetching data -->
+    <div *ngIf="showLoader" id="mainPageLoader">
+      <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <app-phone-record *ngFor="let i of pagenatedResults[currentPage]; let k = index" [ContactModel]=i [referenceId]=k (deleteEvent)="deleteContact($event)"></app-phone-record>
+    </div>
+   
+  </div>
+
+
+  <!-- Floating action button -->
+  
+</div>
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red" [routerLink]="['addNewContact']">
+    <i class="large material-icons">add</i>
+  </a>
+</div>
+
+<!-- Pagenated Footer -->
+<footer style="text-align: center;">
+    <ul class="pagination">
+        <li class="waves-effect"><a href="#!" (click)="previousPage()"><i class="material-icons">chevron_left</i></a></li>
+     
+        <li class="waves-effect"[ngClass]="{'active':currentPage==k}" *ngFor="let i of pagenatedResults ; let k = index" ><a href="#!" (click)="choosePage(k)">{{k+1}}</a></li>
+       
+        <li class="waves-effect"><a href="#!" (click)="nextPage()"><i class="material-icons">chevron_right</i></a></li>
+      </ul>
+</footer>

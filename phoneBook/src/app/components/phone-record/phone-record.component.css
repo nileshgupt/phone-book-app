@@ -1,0 +1,27 @@
+.showMoreIcon{
+    border-radius: 50px;
+    color: black;
+    border: 1px solid black;
+    background: transparent;
+
+}
+.controls{
+    
+}
+#contactsCard{
+    padding-bottom: 1rem;
+}
+#horizontalControls{
+    padding-left: 1%;
+
+
+}
+.input-field{
+    margin: 1px;
+    
+}
+/* To remove the bottom border and increase the font-size */
+.infoViews{
+    border-bottom: none !important;
+    font-size: 1.5rem !important;
+}

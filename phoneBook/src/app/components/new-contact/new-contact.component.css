@@ -1,0 +1,10 @@
+.verticalAlign{
+    display:flex;
+    align-items: center;
+}
+#addNewMainContainer{
+    padding-bottom: 1rem;
+}
+#addNewDetailsContainer{
+    margin-top: 4rem;
+}

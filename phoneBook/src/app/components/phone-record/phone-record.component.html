@@ -1,0 +1,50 @@
+<div class="card" style="padding:1rem" id="contactsCard">
+    
+        <div id="mainHeading">
+            <span style="font-size:1.5rem;"> 
+                
+                {{ContactModel.name}}</span>
+            <span style="float:right" ><a class="waves-effect waves-light btn showMoreIcon" (click)="changeState()"><i class="material-icons">arrow_drop_down</i></a>
+            </span>
+        
+        </div>
+        
+
+       
+        <div>
+            <hr>
+            <div id="horizontalControls">
+                <span> Date of Birth : {{ContactModel.dateOfBirth}}</span>
+                <button class="controls right btn blue" (click)="editContact()">Edit</button>
+                &nbsp; &nbsp;
+                <button class="controls right btn red pulse" (click)="deleteContact()" style="margin-right:5px">Delete</button>
+                
+            </div>
+
+            <div class="row" style="margin-top: 1rem;" [@toggle]="toggleState">
+                <div class="col s12 m6">
+                    <h5>Phone Numbers</h5>
+                    <div class="input-field col s12 m12 l12" *ngFor="let i of ContactModel.phoneNumber">
+                        <i class="material-icons prefix">phone</i>
+                        <input id="icon_telephone" type="tel" class="validate infoViews" value={{i}}>
+                      
+                      </div>
+                </div>
+                <div class="col s12 m6">
+                    <h5>Email Addresses</h5>
+
+                    <div class="input-field col s12 m12 l12" *ngFor="let i of ContactModel.email" >
+                        <i class="material-icons prefix">email</i>
+                        <input id="icon_telephone" type="tel" class="validate infoViews" value={{i}}>
+                       
+                      </div>
+                </div>
+            </div>
+            <div class="progress red" *ngIf="showDeleteIndicator">
+                <div class="indeterminate"></div>
+            </div>
+        </div>
+
+    
+
+    </div>

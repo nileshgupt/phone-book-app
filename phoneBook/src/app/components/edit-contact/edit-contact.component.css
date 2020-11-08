@@ -1,0 +1,13 @@
+.verticalAlign{
+    display:flex;
+    align-items: center;
+}
+#editMainContainer{
+    padding-bottom: 1rem;
+}
+#editMainContainer{
+    margin-top: 4rem;
+}
+.editBanner{
+    font-size: 25px;
+}
